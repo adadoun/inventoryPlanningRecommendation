@@ -69,9 +69,4 @@ def scale_features(X, scaler_path=None):
     return scaler.transform(X)
 
 def get_feature_columns(df):
-    return [col for col in df.columns if col not in ['DATE', 'QUANTITY_SOLD', 'SKU', 'CURRENT_LEVEL']]
-
-def create_sku_index(df):
-    sku_to_index = {sku: idx for idx, sku in enumerate(df['SKU'].unique())}
-    df['SKU_INDEX'] = df['SKU'].map(sku_to_index)
-    return df, sku_to_index
+    return [col for col in df.columns if col not in ['DATE', 'QUANTITY_SOLD', 'SKU', 'SKU_INDEX', 'CURRENT_LEVEL']]
