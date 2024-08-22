@@ -44,6 +44,14 @@ sales-prediction-project/
 │   ├── test_data.csv
 │   ├── scaler.save
 │   └── NN_sales_prediction_model.pth
+├── notebooks/
+│   ├── ArimaSalesPrediction.ipynb
+│   ├── DataPreparation.ipynb
+│   ├── EDASalesData.ipynb
+│   └── EDAStepSizeOptimization.ipynb
+│   ├── LgbmSalesPrediction.ipynb
+│   ├── NNSalesPrediction.ipynb
+│   └── PlanningRecommendation.ipynb 
 ├── src/
 │   ├── __init__.py
 │   ├── data_preparation.py
@@ -51,7 +59,7 @@ sales-prediction-project/
 │   ├── train.py
 │   ├── predict.py
 │   └── recommend.py
-├── main.py
+├── recommenderApp.py
 ├── requirements.txt
 └── README.md
 ```
@@ -75,28 +83,65 @@ sales-prediction-project/
    pip install -r requirements.txt
    ```
 
-## Usage
+## Components
 
-To generate predictions and recommendations for a specific SKU, run:
+### Data
 
-```
-python main.py <SKU>
-```
+- `train_data.csv` and `test_data.csv`: Training and testing datasets
+- `scaler.save`: Saved StandardScaler object for feature scaling
+- `NN_sales_prediction_model.pth`: Saved neural network model
 
-Replace `<SKU>` with the actual SKU you want to analyze.
+### Notebooks
 
-## Training the Model
+- `ArimaSalesPrediction.ipynb`: ARIMA model development
+- `DataPreparation.ipynb`: Data preprocessing and feature engineering
+- `EDASalesData.ipynb`: Exploratory Data Analysis of sales data
+- `EDAStepSizeOptimization.ipynb`: Analysis for optimizing time step size
+- `LgbmSalesPrediction.ipynb`: LightGBM model development
+- `NNSalesPrediction.ipynb`: Neural Network model development
+- `PlanningRecommendation.ipynb`: Inventory planning recommendations development
 
-If you want to retrain the model with new data, you can modify the `src/train.py` file and run it separately.
+### Source Code
 
-## Data
+- `data_preparation.py`: Functions for data preprocessing and feature engineering
+- `model.py`: Neural network model architecture
+- `train.py`: Script for training the neural network model
+- `predict.py`: Functions for making predictions
+- `recommend.py`: Functions for generating inventory recommendations
 
-Make sure to place your training and test data in the `data/` directory. The model and scaler files should also be in this directory after training.
+## Recommender App
 
-## Contributing
+The `recommenderApp.py` file contains a Streamlit-based user interface for interacting with the sales prediction and inventory management system.
 
-Feel free to open issues or submit pull requests if you have suggestions for improvements or find any bugs.
+### How to Launch the App
 
-## License
+Run the Streamlit app:
+``` streamlit run recommenderApp.py ```
 
-This project is licensed under the MIT License.
+The app will open in your default web browser.
+
+### Features and Interaction
+
+- **SKU Selection**: Choose a specific SKU from the dropdown menu.
+- **Time Navigation**: Use the time slider to view predictions and recommendations for different time periods.
+- **Visualization**: 
+- View interactive plots showing actual sales, predicted sales, current inventory, and projected inventory levels.
+- Reorder points are highlighted on the plot.
+- **Recommendations**: 
+- See detailed recommendations for reordering, including when to reorder and suggested quantities.
+- View current inventory levels and predicted sales.
+
+The app provides a user-friendly interface for inventory managers to make data-driven decisions about stock levels and reordering for individual SKUs.
+
+## Performance
+
+The neural network model's performance is evaluated using metrics such as MAE, RMSE, and MAPE. The system demonstrates a high stockout prevention rate of 94.75%, significantly reducing potential stockouts from 2325 to 122.
+
+For detailed performance analysis and further information about the project, please refer to the individual notebook files in the `notebooks/` directory.
+
+## Future Work
+
+- Implement SKU segmentation for more tailored predictions
+- Incorporate external factors (e.g., promotions, economic indicators) into the model
+- Develop a system for continuous model retraining and performance monitoring
+- Integrate inventory cost optimization to balance holding costs and stockout risks
