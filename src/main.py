@@ -1,7 +1,6 @@
 import argparse
-
 import pandas as pd
-from model import SalesNN, ImprovedSalesNN
+from model import SalesNN
 from predict import get_predictions
 from recommend import generate_recommendations
 

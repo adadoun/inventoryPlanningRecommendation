@@ -4,7 +4,7 @@ import os
 import sys
 from src.predict import get_predictions
 from src.recommend import generate_recommendations
-from src.model import SalesNN, ImprovedSalesNN
+from src.model import SalesNN
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from datetime import datetime
@@ -94,8 +94,8 @@ def main():
                                   'Current_Inventory', 'Predicted_Sales']])
 
     # Plot
-    fig = plot_sales_and_inventory(recommendations)
-    st.plotly_chart(fig)
+    #fig = plot_sales_and_inventory(recommendations)
+    #st.plotly_chart(fig)
 
     # Time slider
     st.header("Time Navigation")
@@ -120,4 +120,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
