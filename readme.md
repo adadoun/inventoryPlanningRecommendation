@@ -1,6 +1,39 @@
 # Sales Prediction and Inventory Recommendation System
 
-This project implements a sales prediction and inventory recommendation system using neural networks. It predicts future sales for given SKUs and provides inventory reorder recommendations based on these predictions.
+This project implements a sales prediction and inventory recommendation system using neural networks. 
+It predicts future sales for given SKUs and provides inventory reorder recommendations based on these predictions.
+
+The reordering feature serves several important purposes in the inventory management:
+
+- Error Calculation:
+  * It calculates the Mean Absolute Error (MAE) of the sales predictions, which is used in safety stock calculations.
+
+- Safety Stock Calculation:
+  * It computes a safety stock level based on the prediction error, lead time, and a safety factor.
+  * This helps to buffer against uncertainties in demand and lead time.
+
+- Inventory Projection:
+  * For each SKU, it projects future inventory levels based on current inventory, predicted sales, and actual sales.
+  * It maintains two projections: one with reordering and one without, to show the impact of the reordering strategy.
+
+- Reorder Decision Making:
+  * It determines when to place a reorder based on whether the projected inventory falls below the safety stock level.
+  * When a reorder is needed, it calculates the reorder quantity based on predicted sales and lead time.
+
+- Comprehensive Recommendation Generation:
+  * For each week and SKU, it generates a detailed recommendation including:
+      1. Whether a reorder is needed
+      2. The recommended reorder quantity
+      3. Current inventory levels
+      4. Predicted and actual sales
+      5. Projected inventory levels under different scenarios
+
+The main objective of this function is to provide a data-driven approach to inventory management.
+It aims to:
+* Maintain sufficient stock to meet demand (avoiding stockouts)
+* Avoid excessive inventory (reducing holding costs)
+* Provide visibility into future inventory levels
+* Demonstrate the impact of the reordering strategy compared to no reordering
 
 ## Project Structure
 
